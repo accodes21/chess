@@ -8,27 +8,29 @@
 <body>
 
 <div id="startscene" class="scene show">
-	<div class="scene-content" style="margin-top: 15vh;">
-		<div style="margin-bottom: 50px;">
+	<div class="scene-content">
+		<div class="play-div">
 			<h2>Play Against</h2>
-			<input type="radio" name="oponent" id="humanOponent" value="human" onchange="changeColorSelect()" checked>
-			<label for="humanOponent">Human</label>
-			&ensp;
-			<input type="radio" name="oponent" id="aiOponent" value="ai" onchange="changeColorSelect()">
-			<label for="aiOponent">AI</label>
+			<div class="label-div">
+				<input type="radio" name="oponent" id="humanOponent" value="human" onchange="changeColorSelect()" checked>
+				<label for="humanOponent" class="humanOponent">Human</label>
+				&ensp;
+				<input type="radio" name="oponent" id="aiOponent" value="ai" onchange="changeColorSelect()">
+				<label for="aiOponent" class="aiOponent">AI</label>
+			</div>
 		</div>
 		
 		<div class="select-color-container" style="margin-bottom: 50px;display: none;">
 			<h2>Select Your Color</h2>
 			<input type="radio" name="human_color" id="humanColorWhite" value="white" checked>
-			<label for="humanColorWhite">White</label>
+			<label for="humanColorWhite" class="humanColorWhite">White</label>
 			&ensp;
 			<input type="radio" name="human_color" id="humanColorBlack" value="black">
-			<label for="humanColorBlack">Black</label>
+			<label for="humanColorBlack" class="humanColorBlack">Black</label>
 		</div>
 
 		<div class="start-game-container">
-			<button class="button button-big" onclick="startNewGame()">Start Game</button>
+			<button class="button button-big" onclick="startNewGame()">Start</button>
 		</div>
 	</div>
 	<div class="overlay"></div>
@@ -41,6 +43,13 @@
 	
 <br>
 	<div class="board-container">
+		<div id="blackSematary" class="sematary">
+			<div class="pawn"></div>
+			<div class="knight"></div>
+			<div class="bishop"></div>
+			<div class="rook"></div>
+			<div class="queen"></div>
+		</div>
 
 		<div id="board">
 			<div id="final" class="odd">
@@ -189,29 +198,19 @@
 			</div>
 		</div>
 
-		<p id="turn">White's Turn</p>
-
-		<div class="semataries">
-			<div id="whiteSematary" class="sematary">
-				<div class="pawn"></div>
-				<div class="knight"></div>
-				<div class="bishop"></div>
-				<div class="rook"></div>
-				<div class="queen"></div>
-			</div>
-	
-			<div id="blackSematary" class="sematary">
-				<div class="pawn"></div>
-				<div class="knight"></div>
-				<div class="bishop"></div>
-				<div class="rook"></div>
-				<div class="queen"></div>
-			</div>
+		<div id="whiteSematary" class="sematary">
+			<div class="pawn"></div>
+			<div class="knight"></div>
+			<div class="bishop"></div>
+			<div class="rook"></div>
+			<div class="queen"></div>
 		</div>
 
+		<p id="turn">White's Turn</p>
+		
 	</div>
 
-<div style="position:absolute;left:15px;bottom:15px;">
+<div>
 	<button class="flip-board" onclick="boardAnimate()">Flip Board</button>
 </div>
 
