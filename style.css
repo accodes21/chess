@@ -168,26 +168,30 @@ img.piece{
 #turn{
 	text-align: center;
 	font-size: 18px;
-	margin-top: 12px;
 }
 .winning-sign:first-letter{
 	text-transform: uppercase;
 }
 
 .flip-board{
-	padding: 10px 20px;
-    border-radius: 5px !important;
+	padding: 1em 2em;
+	font-size: 14px;
+    border-radius: 10px !important;
     outline: 0;
     background: #7f979e;
     color: white;
     border: 0;
-	display: none;
+	cursor: pointer;
 }
 
+.flip-board:hover{
+	background-color: #4fa3bd;
+}
 
 input[type="radio"] {
 	display: none;
 }
+
 label {
 	background-color: rgb(112,112,112);
 	position: relative;
@@ -206,17 +210,21 @@ label {
 	border-radius: 10px;
 	border: none;
 	color: white;
-	padding: 20px 40px;
+	padding: 1em 2em;
 	text-align: center;
 	text-decoration: none;
 	display: inline-block;
-	font-size: 20px;
 	cursor: pointer;
 }
 
 input[type="radio"]:checked + label {
-	background-color: #4188e0d0;
+	background-color: rgba(65, 136, 224, 0.6);
 	color: #000;
+	font-weight: 600;
+}
+
+input[type="radio"]:checked + label:hover{
+	background-color: rgba(65, 136, 224, 0.3);
 }
 
 .button-big {
@@ -231,7 +239,7 @@ input[type="radio"]:checked + label {
 }
 
 .button-big:hover{
-	background-color: rgba(0, 0, 0, 0.4);
+	background-color: rgba(0, 0, 0, 0.1);
 }
 
 .play-div{
@@ -276,4 +284,17 @@ label:hover{
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+}
+
+.end-div{
+	margin-top: 1em;
+	margin-bottom: 1em;
+	display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+}
+
+#endgameButton{
+	font-size: 14px !important;
 }

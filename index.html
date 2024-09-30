@@ -210,8 +210,14 @@
 		
 	</div>
 
-<div>
-	<button class="flip-board" onclick="boardAnimate()">Flip Board</button>
+<div class="end-div">
+	<div>
+		<button id="endgameButton" class="button button-big" onclick="endgame()">End Game</button>
+	</div>
+	
+	<div>
+		<button class="flip-board" onclick="boardAnimate()">Flip Board</button>
+	</div>
 </div>
 
 <script type="text/javascript" src="piece.js"></script>
@@ -242,6 +248,13 @@
 			}
 		}	
 	}
+</script>
+
+<script>
+	// Endgame logic
+    const endgame = () => {
+        window.location.reload();
+    }
 </script>
 
 <script>
