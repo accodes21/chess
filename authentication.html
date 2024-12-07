@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login to Play Chess</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f2f5;
+        }
+        .login-container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        #google-login-btn {
+            background-color: #4285F4;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+        }
+        #google-login-btn img {
+            margin-right: 10px;
+            width: 20px;
+            height: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h1>Login to Play Chess</h1>
+        <button id="google-login-btn">
+            <img src="img/Google.png" alt="Google logo">
+            Sign in with Google
+        </button>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-app.js";
+        import { 
+            getAuth, 
+            GoogleAuthProvider, 
+            signInWithPopup 
+        } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-auth.js";
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyCCoo_WAnD9QxhM4xqYACyXZIB4wTNw4IM",
+            authDomain: "chess-9ba37.firebaseapp.com",
+            projectId: "chess-9ba37",
+            storageBucket: "chess-9ba37.firebasestorage.app",
+            messagingSenderId: "314339818612",
+            appId: "1:314339818612:web:3ac0684e86ef93c311a521",
+            measurementId: "G-Y4NR9MES8C"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+        // Google Sign-In
+        document.getElementById('google-login-btn').addEventListener('click', () => {
+            const provider = new GoogleAuthProvider();
+
+            signInWithPopup(auth, provider)
+                .then((result) => {
+                    // The signed-in user info
+                    const user = result.user;
+
+                    // Store user data in localStorage
+                    localStorage.setItem('user', JSON.stringify({
+                        uid: user.uid,
+                        email: user.email,
+                        displayName: user.displayName,
+                        photoURL: user.photoURL
+                    }));
+
+                    // Redirect to main page
+                    window.location.href = "index.html";
+                })
+                .catch((error) => {
+                    // Handle Errors here.
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    
+                    console.error(`Error (${errorCode}): ${errorMessage}`);
+                    alert(`Login failed: ${errorMessage}`);
+                });
+        });
+    </script>
+</body>
+</html>
