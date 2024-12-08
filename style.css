@@ -169,8 +169,10 @@ img.piece{
 	text-align: center;
 	font-size: 18px;
 }
-.winning-sign:first-letter{
+.winning-sign{
 	text-transform: uppercase;
+	color: #ffcc00 !important;
+	font-weight: bolder;
 }
 
 .flip-board{
